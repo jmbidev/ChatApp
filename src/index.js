@@ -1,6 +1,7 @@
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 import { createServer } from 'http'
+import models from '../models'
 
 import schema from './schema'
 
@@ -14,7 +15,8 @@ const server = new ApolloServer({
   ...schema,
   instrospection: true,
   playground: true,
-  tracing: true
+  tracing: true,
+  context: { models }
 })
 
 server.applyMiddleware({ app })
@@ -22,6 +24,9 @@ server.applyMiddleware({ app })
 const httpServer = createServer(app)
 
 server.installSubscriptionHandlers(httpServer)
+
+models.sequelize.authenticate()
+models.sequelize.sync()
 
 httpServer.listen({ port }, () => {
   console.log(`Server ready at http://localhost:${port}${server.graphqlPath}`)

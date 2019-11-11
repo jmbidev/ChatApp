@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "12345678910",
+    "database": "chat-app-dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "postgres",
+    "password": "12345678910",
+    "database": "chat-app-test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "postgres",
+    "password": "12345678910",
+    "database": "chat-app-prod",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "operatorsAliases": false
+  }
+}
